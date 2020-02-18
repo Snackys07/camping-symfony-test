@@ -1,0 +1,21 @@
+<?php //%255BApp%255CForm%255CData%255CHomeSearchData%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['App\\Validator\\HomeSearch'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('App\\Validator\\HomeSearch')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'groups' => [
+                [
+                    'Default',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+    ],
+    []
+); }];

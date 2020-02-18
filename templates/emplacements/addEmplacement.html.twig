@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add emplacement - {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+        <div>
+            {{ form_errors(form) }}
+        </div>
+
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.name) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.capacity) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.superficie) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.price) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.save, { 'label': 'Add Emplacement' }) }}
+            </div>
+        </div>
+    {{ form_end(form) }}
+
+{% endblock %}

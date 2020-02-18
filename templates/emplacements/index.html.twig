@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Locations - {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('add_location') }}" role="button">Create a location</a>
+
+    <h3>Locations</h3>
+    <table class="centered striped responsive-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Capacity</th>
+                <th>Area</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for location in locations %}
+                <tr>
+                    <td>{{ location.name | capitalize }}</td>
+                    <td>{{ location.capacity }}</td>
+                    <td>{{ location.superficie }}</td>
+                    <td>{{ location.price }} {{ 'EUR' | currency_symbol }}</td>
+                    <td>
+                        <a href="{{ path('trip',{emplacementId: location.id}) }}" title="Add customer"><button class=" blue darken-2 btn"><i class="material-icons white-text">person_add</i></button></a>
+                        <a href="{{ path('edit_location',{id: location.id}) }}" title="Edit location"><button class="teal lighten-1 btn"><i class="material-icons white-text">edit</i></button></a>
+                        <a href="{{ path('delete_location',{id: location.id}) }}" title="Remove location"><button class="btn red darken-4"><i class="material-icons white-text">delete</i></button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

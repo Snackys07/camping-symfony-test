@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trip - {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('add_trip',{id: emplacementId}) }}">Add trip</a>
+
+    <table class="striped centered">
+        <thead>
+            <tr>
+                <th>Emplacement</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+            {% if trips|length > 0 %}
+                {% for trip in trips %}
+                    <tr>
+                        <td>{{ emplacementId }}</td>
+                        <td>{{ trip.startDate }}</td>
+                        <td>{{ trip.endDate }}</td>
+                        <td>{{ trip.customerLastname|upper }} {{ trip.customerFirstname|capitalize }}</td>
+                        <td>{{ trip.customerNumber }}</td>
+                        <td>{{ trip.status }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <p>Nothing to show</p>
+            {% endif %}
+    </table>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home - {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+        <div>
+            {{ form_errors(form) }}
+        </div>
+
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.startDate) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.endDate) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.location) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.name) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.status) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.save) }}
+            </div>
+        </div>
+    {{ form_end(form) }}
+
+    <div>
+        {% if data is defined %}
+            <table class="striped centered">
+                <thead>
+                    <tr>
+                        <th>Location</th>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Number</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for res in data %}
+                            <tr>
+                                <td>{{ res.getEmplacement().getId() }}</td>
+                                <td>{{ res.getStartDate()|date("d/m/Y") }} - {{ res.getEndDate()|date("d/m/Y") }}</td>
+                                <td>{{ res.getCustomerLastName()|upper }} {{ res.getCustomerFirstName()|capitalize }}</td>
+                                <td>{{ res.getCustomerNumber() }}</td>
+                                <td>{{ res.getStatus() }}</td>
+                            </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+
+{% endblock %}
